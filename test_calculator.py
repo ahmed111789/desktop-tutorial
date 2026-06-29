@@ -1,4 +1,4 @@
-from calculator import add, substract
+from calculator import add, substract, multiply
 
 
 def test_add():
@@ -9,3 +9,8 @@ def test_add():
 def test_substract():
     assert substract(5, 1) == 4
     assert substract(1, 5) == -4
+
+
+def test_multiply():
+    assert multiply(5, 2) == 10
+    assert multiply(5, -2) == -10
