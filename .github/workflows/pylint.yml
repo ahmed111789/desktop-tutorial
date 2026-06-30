@@ -26,18 +26,19 @@ jobs:
           MSG=$(git log -1 --pretty=%B)
           echo "Commit message: $MSG"
 
-          if echo "$MSG" | grep -q "autofix"; then
+          if echo "$MSG" | grep -q ":-autofix-:"; then
             echo "mode=fix" >> $GITHUB_OUTPUT
           else
             echo "mode=check" >> $GITHUB_OUTPUT
           fi
+
       - name: Run lint (normal)
         if: steps.check.outputs.mode == 'check'
         run: ruff check .
 
       - name: Run lint (auto-fix)
         if: steps.check.outputs.mode == 'fix'
-        run: ruff check . --fix
+        run: ruff check . --fix --show-fixes
 
       - name: Run unit tests
         run: pytest test_calculator.py -v
