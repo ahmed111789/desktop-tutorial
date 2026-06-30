@@ -12,5 +12,5 @@ def test_substract():
 
 
 def test_multiply():
-    assert multiply(5, 2) == 10
+    assert multiply(5, 3) == 15
     assert multiply(5, -2) == -10
